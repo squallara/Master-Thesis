@@ -6,8 +6,9 @@ public class CustomDepthImageViewer : MonoBehaviour
 	// the KinectManager instance
 	private KinectManager manager;
 
-	// the foreground texture
-	private Texture2D foregroundTex;
+    // the foreground texture
+    public GUITexture backgroundImage;
+    private Texture2D foregroundTex;
 	
 	// rectangle taken by the foreground texture (in pixels)
 	public Rect foregroundRect;
@@ -63,8 +64,12 @@ public class CustomDepthImageViewer : MonoBehaviour
 		// get the users texture
 		if(manager && manager.IsInitialized())
 		{
-			//foregroundTex = manager.GetUsersLblTex();
-		}
+            //foregroundTex = manager.GetUsersLblTex();
+            if (backgroundImage && (backgroundImage.texture == null))
+            {
+                backgroundImage.texture = manager.GetUsersClrTex();
+            }
+        }
 
 		if(manager.IsUserDetected())
 		{
