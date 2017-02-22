@@ -43,7 +43,7 @@ public class DepthImageViewer : MonoBehaviour
 			jointColliders[i].transform.parent = transform;
 			
 			SphereCollider collider = jointColliders[i].AddComponent<SphereCollider>();
-			collider.radius = 1f;
+			collider.radius = 0.8f;
 		}
 	}
 	

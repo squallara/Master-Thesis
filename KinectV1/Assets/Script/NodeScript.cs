@@ -16,6 +16,8 @@ public class NodeScript : MonoBehaviour {
 
     bool activeTimer;
 
+    public bool isSustained, repeatOnTouch;
+
     float timer;
 
 	// Use this for initialization
@@ -53,9 +55,10 @@ public class NodeScript : MonoBehaviour {
     {
         //Debug.Log("Triggered");
         myMat.color = trigColor;
-        audio.PlayOneShot(instrument,0.2f);
+        audio.PlayOneShot(instrument,0.5f);
         activeTimer = true;
         timer = countDown;
+
     }
 
 
@@ -64,10 +67,12 @@ public class NodeScript : MonoBehaviour {
         activeTimer = true;
         Debug.Log("On Trigger Stay");
         myMat.color = trigColor;
-        if (timer == 0)
+        if (timer == 0 && repeatOnTouch == true)
         {
             Debug.Log("Audio Not Playing");
-            audio.PlayOneShot(instrument, 0.2f);
+            audio.Stop();
+            audio.PlayOneShot(instrument, 0.5f);
+            
             timer = countDown;
         }
         
@@ -77,6 +82,10 @@ public class NodeScript : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
+        if(isSustained == false)
+        {
+            audio.Stop();
+        }
         activeTimer = false;
         //timer = countDown;
         //Debug.Log("Exited");
