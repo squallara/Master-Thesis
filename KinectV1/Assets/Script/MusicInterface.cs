@@ -25,21 +25,6 @@ public class MusicInterface : MonoBehaviour {
     void Start () {
 
         kinectOverlay = this.GetComponent<KinectOverlayer>();
-
-        if(useDepth == true)
-        {
-            LeftHandCol = GameObject.Find("HandLeftCollider");
-            RightHandCol = GameObject.Find("HandRightCollider");
-
-            left = LeftHandCol.gameObject.AddComponent<Rigidbody>();
-            right = RightHandCol.gameObject.AddComponent<Rigidbody>();
-
-            left.useGravity = false;
-            right.useGravity = false;
-
-            left.isKinematic = true;
-            right.isKinematic = true;
-        }
         
 
     }
