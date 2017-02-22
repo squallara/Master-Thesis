@@ -32,7 +32,7 @@ public class MusicInterface : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if((LeftHandCol == null || RightHandCol == null) && useDepth == true)
+        if((LeftHandCol == null && RightHandCol == null) && useDepth == true)
         {
             LeftHandCol = GameObject.Find("HandLeftCollider");
             RightHandCol = GameObject.Find("HandRightCollider");
