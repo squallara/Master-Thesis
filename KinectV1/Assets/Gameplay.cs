@@ -32,8 +32,21 @@ public class Gameplay : MonoBehaviour {
     {
         if(depthViewer.userId2 > 0 && active == false)
         {
-            synth2.gameObject.SetActive(true);
+            if (drums.activeInHierarchy)
+            {
+                synth2.gameObject.SetActive(true);
+            }
+            else if(synth.activeInHierarchy)
+            {
+                drums2.gameObject.SetActive(true);
+            }
             active = true;
+        }
+        else if(depthViewer.userId2 <= 0)
+        {
+            active = false;
+            drums2.SetActive(false);
+            synth2.SetActive(false);
         }
     }
 }
