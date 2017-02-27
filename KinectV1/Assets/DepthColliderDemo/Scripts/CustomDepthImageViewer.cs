@@ -20,7 +20,7 @@ public class CustomDepthImageViewer : MonoBehaviour
     public float colliderRadius, divider;
 
     // game objects to contain the joint colliders
-    private GameObject[] jointColliders = null;
+    private GameObject[] jointColliders = null, jointColliders2 = null;
 
     public float rectHeight = 980, rectWidth = 1920;
 
@@ -42,6 +42,7 @@ public class CustomDepthImageViewer : MonoBehaviour
         // create joint colliders
         int numColliders = (int)KinectWrapper.NuiSkeletonPositionIndex.Count;
         jointColliders = new GameObject[numColliders];
+        jointColliders2 = new GameObject[numColliders];
 
         for (int i = 0; i < numColliders; i++)
         {
@@ -49,8 +50,15 @@ public class CustomDepthImageViewer : MonoBehaviour
             jointColliders[i] = new GameObject(sColObjectName);
             jointColliders[i].transform.parent = transform;
 
+            string sColObjectName2 = ((KinectWrapper.NuiSkeletonPositionIndex)i).ToString() + "Collider2";
+
+            jointColliders2[i] = new GameObject(sColObjectName2);
+            jointColliders2[i].transform.parent = transform;
+
             SphereCollider collider = jointColliders[i].AddComponent<SphereCollider>();
+            SphereCollider collider2 = jointColliders2[i].AddComponent<SphereCollider>();
             collider.radius = colliderRadius;
+            collider2.radius = colliderRadius;
         }
     }
 
@@ -119,6 +127,7 @@ public class CustomDepthImageViewer : MonoBehaviour
                 if (manager.IsJointTracked(userId2, i))
                 {
                     Vector3 posJoint = manager.GetRawSkeletonJointPos(userId2, i);
+                    
 
                     if (posJoint != Vector3.zero)
                     {
@@ -135,7 +144,7 @@ public class CustomDepthImageViewer : MonoBehaviour
                         Vector3 posScreen = new Vector3(screenX, screenY, zDistance);
                         Vector3 posCollider = Camera.main.ScreenToWorldPoint(posScreen);
 
-                        jointColliders[i].transform.position = posCollider;
+                        jointColliders2[i].transform.position = posCollider;
                     }
                 }
 
