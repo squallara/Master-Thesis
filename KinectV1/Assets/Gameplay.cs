@@ -6,7 +6,7 @@ public class Gameplay : MonoBehaviour {
 
     public static Gameplay instance;
 
-    public GameObject drums, synth, drums2, synth2;
+    public GameObject drums, synth, drums2, synth2, drumButton, synthButton;
 
     CustomDepthImageViewer depthViewer;
     public GameObject mainCam;
@@ -41,12 +41,16 @@ public class Gameplay : MonoBehaviour {
                 drums2.gameObject.SetActive(true);
             }
             active = true;
+            drumButton.SetActive(false);
+            synthButton.SetActive(false);
         }
         else if(depthViewer.userId2 <= 0)
         {
             active = false;
             drums2.SetActive(false);
             synth2.SetActive(false);
+            drumButton.SetActive(true);
+            synthButton.SetActive(true);
         }
     }
 }

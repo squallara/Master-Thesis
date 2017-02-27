@@ -37,12 +37,9 @@ public class MusicInterface2 : MonoBehaviour
     void Update()
     {
 
-        Debug.Log("Hand Left = " + LeftHandCol);
 
         if ((LeftHandCol == null || RightHandCol == null) && useDepth == true)
         {
-
-            Debug.Log("Add RIGID BODY");
 
             LeftHandCol = GameObject.Find("HandLeftCollider2");
             RightHandCol = GameObject.Find("HandRightCollider2");

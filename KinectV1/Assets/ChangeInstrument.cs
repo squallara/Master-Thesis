@@ -31,17 +31,17 @@ public class ChangeInstrument : MonoBehaviour {
     }
 
 
-    void Update()
-    {
-        if(drums2.activeInHierarchy || synth2.activeInHierarchy)
-        {
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            gameObject.SetActive(true);
-        }
-    }
+    //void Update()
+    //{
+    //    if(drums2.activeInHierarchy || synth2.activeInHierarchy)
+    //    {
+    //        gameObject.SetActive(false);
+    //    }
+    //    else
+    //    {
+    //        gameObject.SetActive(true);
+    //    }
+    //}
 
 
 }
