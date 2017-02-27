@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChangeInstrument : MonoBehaviour {
 
-    public GameObject drums, synth;
+    public GameObject drums, synth, drums2, synth2;
 
 
     void OnTriggerEnter()
@@ -29,4 +29,19 @@ public class ChangeInstrument : MonoBehaviour {
     {
         Gameplay.instance.changed = false;
     }
+
+
+    void Update()
+    {
+        if(drums2.activeInHierarchy || synth2.activeInHierarchy)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
+    }
+
+
 }
