@@ -15,8 +15,8 @@ public class CustomDepthImageViewer : MonoBehaviour
     public Vector2 foregroundOfs;
 
     [HideInInspector]
-    public uint userId, userId2;
-    
+    public uint userId2;
+
     public float colliderRadius, divider;
 
     // game objects to contain the joint colliders
@@ -76,15 +76,15 @@ public class CustomDepthImageViewer : MonoBehaviour
 
         if (manager.IsUserDetected())
         {
-            userId = manager.GetPlayer1ID();
-
-            Debug.Log("Player 1 ID = " + userId);
+            uint userId = manager.GetPlayer1ID();
 
             //Player 2
             userId2 = manager.GetPlayer2ID();
 
-            Debug.Log("Player 2 ID = " + userId2);
+            print(userId);
+            print(userId2);
 
+            
 
             // update colliders
             int numColliders = (int)KinectWrapper.NuiSkeletonPositionIndex.Count;
