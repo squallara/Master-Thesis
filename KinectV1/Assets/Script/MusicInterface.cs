@@ -21,6 +21,8 @@ public class MusicInterface : MonoBehaviour {
 
     float zPos;
 
+    public float yOffset = 0;
+
     // Use this for initialization
     void Start () {
 
@@ -111,7 +113,7 @@ public class MusicInterface : MonoBehaviour {
 
             if (mDiffX > threshold || mDiffY > threshold)
             {
-                Vector3 depthPos = new Vector3(kinectOverlay.OverlayObject.transform.position.x, kinectOverlay.OverlayObject.transform.position.y, zPos);
+                Vector3 depthPos = new Vector3(kinectOverlay.OverlayObject.transform.position.x, kinectOverlay.OverlayObject.transform.position.y + yOffset, zPos);
                 musicInterface.transform.position = depthPos;
             }
                 
