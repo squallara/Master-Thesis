@@ -81,6 +81,9 @@ public class CustomDepthImageViewer : MonoBehaviour
             //Player 2
             userId2 = manager.GetPlayer2ID();
 
+            print(userId);
+            print(userId2);
+
             
 
             // update colliders
